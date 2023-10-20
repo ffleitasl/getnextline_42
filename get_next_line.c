@@ -6,7 +6,7 @@
 /*   By: ffleitas <ffleitas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:10:50 by ffleitas          #+#    #+#             */
-/*   Updated: 2023/10/16 22:35:21 by ffleitas         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:00:02 by ffleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,70 +36,167 @@ me será util strlen, strchr, strjoin, strdup
 int open(const char *Path, int flags);
 ssize_t read(int fd, void *buf, size_t count);*/
 
-int	ft_checkn(char *buffer) //me va a decir cuantos \n tengo al llamar a la función en un bucle
-{
-	int i;
 
-	i = 0;
-	while(*buffer)
-	{
-		if (*buffer == '\n')
-			i ++;
-		buffer ++;		
-	}
-	return (i);	
-}
-char *ft_getline(int fd)
+void ft_leaks()
 {
-	char *buffer;
-	char *line;
-	int i;
-	int j;
-	ssize_t nr_bytes;
+    system("leaks -q a.out");
+}
+
+char	*ft_strjoin(const char *s1, const char *s2)
+{
+	char	*sub;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
-	buffer = malloc(BUFFER_SIZE);
+	sub = (char *)malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!s2 || !sub)
+		return (NULL);
+	if (s1)
+	{
+		while (s1[i] != '\0')
+		{
+			sub[i] = s1[i];
+			i ++;	
+		}
+	}
+	while (s2[j] != '\0')
+	{
+		sub[i + j] = s2[j];
+		j ++;
+	}
+	sub[i + j] = '\0';
+	return (sub);
+}
+
+char *ft_readfile(int fd, char *storage)  //Leer el archivo y almacenar la lectura en Storage
+{
+	char	*buffer;
+	ssize_t  bytes_read;
+	
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); // Crear espacio en memoria para el buffer generado por el read + el carácter nulo
 	if (!buffer)
 		return (NULL);
-	line = malloc(BUFFER_SIZE + 1);
-	if (!line)
-		return(NULL);
-	nr_bytes = read(fd,buffer,BUFFER_SIZE);
-	if (nr_bytes == -1)
+	while (!ft_strchr(storage, '\n')) // Bucle que se ejecuta mientras en el buffer no haya un salto de línea
+	{
+		bytes_read = read(fd,buffer, BUFFER_SIZE); 
+		if (bytes_read == -1) // Sí es -1 (Error)
+			return (free(buffer), NULL); //Libera la memoria del Buffer, y devuelve NULL;
+		buffer[bytes_read] = '\0'; //Agrega el carácter nulo al final
+		if (bytes_read == 0) //Sí no tiene bytes que leer porque ha llegado al final del archivo
+			break; //Sal del bucle
+		storage = ft_strjoin(storage, buffer); //Almacena en  Storage, lo que esté en el Buffer hasta llegar a \n
+	}
+	free(buffer); //Libera la memoria del buffer
+	return(storage); //Devuelve lo que se ha almacenado
+}
+
+
+char *ft_extractline(char *storage) //Extraer la línea almacenada en Storage
+{
+	char	*saved; 
+	int		i;
+		
+	i = 0;	
+	if (!storage) //Sí mi almacenamiento es nulo
+		return (NULL); //Devuelve nulo
+	while (storage[i] && storage[i] != '\n') //Mientras Storage no sea nulo y en Storage no se encuentre un salto de línea
+		i++; //Itera a través de Storage, para obtener la longitud total de lo almacenado en Storage hasta \n
+	saved = ft_substr(storage,0,i); //Mi variable saved, ahora va a almacenar una subcadena, en base a lo que está en Storage, de la longitud de i (longitud desde el inicio hasta el primer \n)
+	if(!saved)						
 		return (NULL);
-	while (buffer[i] && buffer[i] != '\n')
-		line[j ++] = buffer[i ++];
-	if (buffer[i] == '\n')
-		line[j ++] = buffer[i ++];
-	line[j] = '\0';
-	free(buffer);
-	return(line);
+	return(saved); //Devuelve la cadena creada
 }
 
 
-int main() 
+char *ft_nextline(char *storage) //Elimina la primera línea obtenida, y reinicia la línea para almacenar lo siguiente (EXPLICAR MEJOR)
 {
-    int fd;
-    char *str;
-	int len;
-	char *buffer;
-
-    fd = open("texto.txt", O_RDONLY);
-    if (fd <= 0) 
-		return (0);
-
-    str = ft_getline(fd);
-    if (!str)
-		return (0);
-	len = ft_checkn(str);
-   	printf("%s\n%d\n", str,len);
-    free(str);
-    close(fd);
-    return (0);
-}
-/*char *get_next_line(int fd)
-{
+	int 	i;
+	int		j;
+	char	*new_line;
 	
-}*/
+	i = 0;
+	j = 0;
+	if (!storage)
+		return (NULL);
+	while(storage[i] != '\0' && storage[i] != '\n') //Sí mi Storage es distinto de nulo y del salto de línea
+		i ++; //Itera para alcanzar la posición del \n
+	new_line = ft_calloc(ft_strlen(storage) - i + 1, sizeof(char)); //Crea un espacio en memoria equivalente a la longitud de Storage menos el espacio que hay entre
+	if (!new_line)													// El inicio y el primer salto de línea, por ejemplo Hola/nComoEstás
+		return(free(storage),NULL);									// 14 - 5 = 9. +1 Para el carácter nulo, así me quedarían 10 espacios, lo que necesito para almacenar lo siguiente al \n
+	if (storage[i] == '\0')  //Sí en la posición de i es igual a nulo, devuelve NULL
+		return NULL;
+	i++;	// Sí en la posición de i es igual a \n hago i++, para saltar ese salto de línea, por ende, si mi i valía 5, ahora vale 6, y empiezo a copiar a partir de ahí
+	while(storage[i] != '\0') //Mientras mi Storage no sea nulo
+	{
+		new_line[j] = storage[i]; //Copio en la posición inicial de newline(0), desde la posición i de storage.
+		j ++;
+		i ++;
+	}
+	free(storage);
+	return(new_line);	//Devuelvo la línea copiada
+}
+
+char *get_next_line(int fd)
+{
+	static char *storage;
+	char	*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	storage = ft_readfile(fd, storage);
+	if (!storage)
+		return (NULL);
+	line = ft_extractline(storage);
+	storage = ft_nextline(storage);
+	return (line);
+}
+int main(void)
+{
+	int    fd;
+	char  *line;
+	int  count;
+
+	atexit(ft_leaks);
+	count = 1;
+	fd = open("texto.txt", O_RDONLY);
+	if (fd == -1)
+		return(0);
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		printf("[%d]:%s\n", count, line);
+		free(line);
+		line = get_next_line(fd);
+		count++;
+	}
+	free(line);
+	close(fd);
+	return (0);
+}
+
+
+
+
+// text:
+// hola 
+// como estas
+// muy BIG_ENDIAN
+
+
+// BUFFER_SIZE 1
+// ft_storage hola\n 5x
+
+// BUFFER_SIZE 3
+// ft_storage hola\nc  2x
+// hola\n
+// c 
+
+// BUFFER_SIZE 500
+// ft_storage hola\ncomo estas\nmmmm  1x
+// hola\n
+// como estas\nmmmm
+
+
 
