@@ -6,7 +6,7 @@
 /*   By: ffleitas <ffleitas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:22:29 by ffleitas          #+#    #+#             */
-/*   Updated: 2023/10/20 20:58:54 by ffleitas         ###   ########.fr       */
+/*   Updated: 2023/10/22 16:51:50 by ffleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,35 +26,35 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*result;
+// void	*ft_calloc(size_t count, size_t size)
+// {
+// 	void	*result;
 
-	if (count == SIZE_MAX || size == SIZE_MAX)
-		return (NULL);
-	result = malloc (count * size);
-	if (!result)
-	{
-		return (NULL);
-	}
-	else
-	{
-		ft_bzero (result, (count * size));
-	}
-	return (result);
-}
+// 	if (count == SIZE_MAX || size == SIZE_MAX)
+// 		return (NULL);
+// 	result = malloc (count * size);
+// 	if (!result)
+// 	{
+// 		return (NULL);
+// 	}
+// 	else
+// 	{
+// 		ft_bzero (result, (count * size));
+// 	}
+// 	return (result);
+// }
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
+// void	ft_bzero(void *s, size_t n)
+// {
+// 	size_t	i;
 
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s)[i] = 0;
-		i ++;
-	}
-}
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		((unsigned char *)s)[i] = 0;
+// 		i ++;
+// 	}
+// }
 char	*ft_strchr(const char *str, int c)
 {
 	int	i;
@@ -103,4 +103,39 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	sub[j] = '\0';
 	return (sub);
+}
+char	*ft_strjoin(const char *s1, const char *s2)
+{
+	char	*sub;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	sub = (char *)malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!s2 || !sub)
+		return (NULL);
+	if (s1)
+	{
+		while (s1[i] != '\0')
+		{
+			sub[i] = s1[i];
+			i ++;
+		}
+	}
+	while (s2[j] != '\0')
+	{
+		sub[i + j] = s2[j];
+		j ++;
+	}
+	sub[i + j] = '\0';
+	return (sub);
+}
+char	*ft_joinandfree(char *s1, char *s2)
+{
+	char	*temp;
+
+	temp = ft_strjoin(s1, s2);
+	free(s1);
+	return (temp);
 }

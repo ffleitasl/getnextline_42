@@ -6,7 +6,7 @@
 /*   By: ffleitas <ffleitas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:10:44 by ffleitas          #+#    #+#             */
-/*   Updated: 2023/10/20 20:52:39 by ffleitas         ###   ########.fr       */
+/*   Updated: 2023/10/22 16:34:55 by ffleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 #include <fcntl.h>
 
 size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t count, size_t size);
-void	ft_bzero(void *s, size_t n);
+char	*ft_joinandfree(char *s1, char *s2);
 char	*ft_strchr(const char *str, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(const char *s1, const char *s2);
 
 #endif
