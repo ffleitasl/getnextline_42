@@ -40,3 +40,9 @@ Line: Hello\n
 **STEP 3:** Modify the buffer.
 
 Buffer: Ho
+
+## Recommendations:
+
+- Structure each step as an independent function to facilitate development and debugging.
+- Study the functions in the libft library and consider which ones might be useful for your implementation.
+- Make necessary adjustments to functions; don't worry if implementing one results in a segfault—it's part of the process.
