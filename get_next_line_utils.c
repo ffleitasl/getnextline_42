@@ -95,15 +95,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (sub);
 }
 
-/**
- * The function `ft_joinandfree` concatenates two strings and frees the memory of the first string.
- * 
- * @param s1 A pointer to the first string to be joined and freed.
- * @param s2 A pointer to a string that you want to join with s1.
- * 
- * @return a pointer to a character, which is the result of concatenating `s1` and `s2` using the
- * `ft_strjoin` function.
- */
 char	*ft_joinandfree(char *s1, char *s2)
 {
 	char	*temp;
