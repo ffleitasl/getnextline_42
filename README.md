@@ -2,9 +2,19 @@
 
 
 
-**DISCLAIMER** Consider my code as a reference; the bonus functions correctly, but the moulinette does not approve. There might be a double-free issue, so exercise caution. I'll provide an update if I manage to resolve it.
+**DISCLAIMER:** Consider my code as a reference; the bonus functions correctly, but the moulinette does not approve. There might be a double-free issue, so exercise caution. I'll provide an update if I manage to resolve it.
 
-## Project objetive
+
+## Table of Contents
+
+- [Project objective](#whats-libft)
+- [Project complexity](#libfts-content)
+- [¿How to solved GNL?](#libft-from-easy-to-difficult-according-to-me)
+  - [Graphical Example (BUFFER_SIZE = 4)](#libc-functions)
+- [Recommendations](#additional-functions)
+- [Helpful Resources](#helpful-resources) 
+
+## Project objective
 
 The "Get Next Line" project aims to create a function, get_next_line(int fd), capable of reading a file descriptor and returning the line obtained up to the first newline character.
 
