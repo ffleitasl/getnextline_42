@@ -1,6 +1,6 @@
 # Get Next Line - @42Born2Code
 
-![Screenshoot](https://github.com/freddyfleitas/getnextline_42/blob/main/gnl.png)
+![Screenshoot](https://github.com/freddyfleitas/getnextline_42/blob/master/gnl.png)
 
 **DISCLAIMER:** Consider my code as a reference; the bonus functions correctly, but the moulinette does not approve. There might be a double-free issue, so exercise caution. I'll provide an update if I manage to resolve it.
 
