@@ -46,3 +46,11 @@ Buffer: Ho
 - Structure each step as an independent function to facilitate development and debugging.
 - Study the functions in the libft library and consider which ones might be useful for your implementation.
 - Make necessary adjustments to functions; don't worry if implementing one results in a segfault—it's part of the process.
+
+## Useful Resources:
+
+To achieve optimal implementation, understanding the workings of write, the data types used, and the purpose of static variables is essential. Here are some useful resources:
+
+- [Read data from a file using read in C]([https://github.com/xicodomingues/francinette](https://www.educative.io/answers/read-data-from-a-file-using-read-in-c)https://www.educative.io/answers/read-data-from-a-file-using-read-in-c)
+- [Static Variables in C](https://github.com/xicodomingues/francinette](https://www.educative.io/answers/read-data-from-a-file-using-read-in-c)https://www.educative.io/answers/read-data-from-a-file-using-read-in-c](https://www.it.uc3m.es/pbasanta/asng/course_notes/variables_en.html#variables_static)https://www.it.uc3m.es/pbasanta/asng/course_notes/variables_en.html#variables_static)
+- [Explanation of the use of static variables in C]([https://github.com/xicodomingues/francinette](https://www.educative.io/answers/read-data-from-a-file-using-read-in-c)https://www.educative.io/answers/read-data-from-a-file-using-read-in-c](https://www.it.uc3m.es/pbasanta/asng/course_notes/variables_en.html#variables_static)https://www.it.uc3m.es/pbasanta/asng/course_notes/variables_en.html#variables_static](https://stackoverflow.com/questions/572547/what-does-static-mean-in-c)https://stackoverflow.com/questions/572547/what-does-static-mean-in-c)
