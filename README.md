@@ -12,8 +12,8 @@ The complexity lies in the specific approach we take to address the problem. The
 
 Before diving into implementation, it is crucial to understand how our program will work to obtain the line:
 
-### STEP 1: The program must read from the descriptor (fd) and store in a buffer as many times as BUFFER_SIZE allows, until encountering a newline character \n.
+** STEP 1: ** The program must read from the descriptor (fd) and store in a buffer as many times as BUFFER_SIZE allows, until encountering a newline character \n.
 
-### STEP 2: Extract from the buffer the portion stored up to the \n.
+** STEP 2: ** Extract from the buffer the portion stored up to the \n.
 
-### STEP 3: Modify the buffer to position ourselves after the \n. It's important to note that the function should be able to read an entire file if called repeatedly.
+** STEP 3: ** Modify the buffer to position ourselves after the \n. It's important to note that the function should be able to read an entire file if called repeatedly.
