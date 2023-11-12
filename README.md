@@ -11,7 +11,7 @@
 - [How to solve GNL?](#how-to-solve-gnl)
 - [Graphical Example (BUFFER_SIZE = 4)](#graphical-example-buffer_size--4)
 - [Recommendations](#recommendations)
-- [Helpful Resources](#helpful-resources)
+- [Helpful Resources](#useful-resources)
 
 ## Project objective
 
