@@ -1,7 +1,9 @@
 # Get Next Line - @42Born2Code
 
-## DISCLAIMER:
-Refer to my code as a guide; the bonus functions works correctly, but the moulinette does not approve.
+
+
+**DISCLAIMER**Consider my code as a reference; the bonus functions correctly, but the moulinette does not approve. There might be a double-free issue, so exercise caution. I'll provide an update if I manage to resolve it.
+
 ## Project objetive
 
 The "Get Next Line" project aims to create a function, get_next_line(int fd), capable of reading a file descriptor and returning the line obtained up to the first newline character.
