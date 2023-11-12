@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffleitas <ffleitas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:49:55 by ffleitas          #+#    #+#             */
-/*   Updated: 2023/11/11 16:05:18 by ffleitas         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:43:47 by ffleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_readfile(int fd, char *storage)
 {
@@ -83,22 +83,22 @@ char	*ft_nextline(char *storage)
 
 char	*get_next_line(int fd)
 {
-	static char	*storage;
+	static char	*storage[OPEN_MAX];
 	char		*line;
 
-	if (fd == -1 || read (fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || read (fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
 	{
-		if (storage)
+		if (storage[fd])
 		{
-			free (storage);
-			storage = NULL;
+			free (storage[fd]);
+			storage[fd] = NULL;
 		}
 		return (NULL);
 	}
-	storage = ft_readfile(fd, storage);
-	if (!storage)
+	storage[fd] = ft_readfile(fd, storage[fd]);
+	if (!storage[fd])
 		return (NULL);
-	line = ft_extractline(storage);
-	storage = ft_nextline(storage);
+	line = ft_extractline(storage[fd]);
+	storage[fd] = ft_nextline(storage[fd]);
 	return (line);
 }
