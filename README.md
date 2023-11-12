@@ -11,7 +11,7 @@
 - [How to solve GNL?](#how-to-solve-gnl)
 - [Graphical Example (BUFFER_SIZE = 4)](#graphical-example-buffer_size--4)
 - [Recommendations](#recommendations)
-- [Helpful Resources](#useful-resources)
+- [Helpful Resources](#helpful-resources)
 
 ## Project objective
 
@@ -60,7 +60,7 @@ Buffer: Ho
 - Study the functions in the libft library and consider which ones might be useful for your implementation.
 - Make necessary adjustments to functions; don't worry if implementing one results in a segfault—it's part of the process.
 
-## Useful Resources:
+## Helpful Resources:
 
 To achieve optimal implementation, understanding the workings of write, the data types used, and the purpose of static variables is essential. Here are some useful resources:
 
