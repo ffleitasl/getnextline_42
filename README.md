@@ -2,7 +2,7 @@
 
 
 
-**DISCLAIMER**Consider my code as a reference; the bonus functions correctly, but the moulinette does not approve. There might be a double-free issue, so exercise caution. I'll provide an update if I manage to resolve it.
+**DISCLAIMER** Consider my code as a reference; the bonus functions correctly, but the moulinette does not approve. There might be a double-free issue, so exercise caution. I'll provide an update if I manage to resolve it.
 
 ## Project objetive
 
