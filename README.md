@@ -17,3 +17,13 @@ Before diving into implementation, it is crucial to understand how our program w
 **STEP 2:** Extract from the buffer the portion stored up to the \n.
 
 **STEP 3:** Modify the buffer to position ourselves after the \n. It's important to note that the function should be able to read an entire file if called repeatedly.
+
+### Graphical Example (BUFFER_SIZE = 4):
+
+Consider a file **EXAMPLE.txt** with the content:
+
+```
+Hello
+How are
+You
+```
