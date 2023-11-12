@@ -1,18 +1,17 @@
 # Get Next Line - @42Born2Code
 
-
+![Screenshoot](https://github.com/Freddyfleitas/getnextline_42/blob/main/gnl.png)
 
 **DISCLAIMER:** Consider my code as a reference; the bonus functions correctly, but the moulinette does not approve. There might be a double-free issue, so exercise caution. I'll provide an update if I manage to resolve it.
 
-
 ## Table of Contents
 
-- [Project objective](#whats-libft)
-- [Project complexity](#libfts-content)
-- [¿How to solved GNL?](#libft-from-easy-to-difficult-according-to-me)
-  - [Graphical Example (BUFFER_SIZE = 4)](#libc-functions)
-- [Recommendations](#additional-functions)
-- [Helpful Resources](#helpful-resources) 
+- [Project objective](#project-objective)
+- [Project complexity](#project-complexity)
+- [How to solve GNL?](#how-to-solve-gnl)
+- [Graphical Example (BUFFER_SIZE = 4)](#graphical-example-buffer_size--4)
+- [Recommendations](#recommendations)
+- [Helpful Resources](#helpful-resources)
 
 ## Project objective
 
