@@ -27,3 +27,15 @@ Hello
 How are
 You
 ```
+
+**STEP 1:** Read and store in the buffer.
+
+Buffer: Hello\nHo
+
+**STEP 2:** Extract line.
+
+Line: Hello\n
+
+**STEP 3:** Modify the buffer.
+
+Buffer: Ho
