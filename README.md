@@ -31,6 +31,8 @@ Before diving into implementation, it is crucial to understand how our program w
 
 **STEP 3:** Modify the buffer to position ourselves after the \n. It's important to note that the function should be able to read an entire file if called repeatedly.
 
+**HINT:** Get familiar with the project, make a main, from which obtain an fd through the open function. After this, try to print what is contained in the file ;)
+
 
 ## Graphical Example (BUFFER_SIZE = 4):
 
