@@ -23,9 +23,9 @@ The complexity lies in the specific approach we take to address the problem. The
 
 ## ¿How to solved GNL?
 
-Before diving into implementation, it is crucial to understand how our program will work to obtain the line:
-
 **HINT: Get familiar with the project, make a main, from which obtain an fd through the open function. After this, try to print what is contained in the file ;)**
+
+Before diving into implementation, it is crucial to understand how our program will work to obtain the line:
 
 **STEP 1:** The program must read from the descriptor (fd) and store in a buffer as many times as BUFFER_SIZE allows, until encountering a newline character \n.
 
