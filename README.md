@@ -15,7 +15,7 @@
 
 ## Project objective
 
-The "Get Next Line" project aims to create a function, get_next_line(int fd), capable of reading a file descriptor and returning the line obtained up to the first newline character.
+The "Get Next Line" project aims to create a function, **char *get_next_line(int fd)**, capable of reading a file descriptor and returning the line obtained up to the first newline character.
 
 ## Project complexity
 
